@@ -1,5 +1,16 @@
-//your JS code here.
+const questionsElement = document.getElementById("questions");
+const userAnswers = [];
 
+document.getElementById("submit").addEventListener("click", function () {
+	let score = 0;
+	for(let i=0; i<questions.length; i++){
+		const selected = document.querySelector(`input[name = "question-${i}"]:checked`);
+		if(selected && selected.value === questions[i].answer){
+			score++;
+		}
+	}
+	document.getElementById("score").textContent = `Your score: ${score}/${questions.length}`;
+});
 // Do not change code below this line
 // This code will just display the questions to the screen
 const questions = [
@@ -35,6 +46,7 @@ function renderQuestions() {
   for (let i = 0; i < questions.length; i++) {
     const question = questions[i];
     const questionElement = document.createElement("div");
+	  
     const questionText = document.createTextNode(question.question);
     questionElement.appendChild(questionText);
     for (let j = 0; j < question.choices.length; j++) {
